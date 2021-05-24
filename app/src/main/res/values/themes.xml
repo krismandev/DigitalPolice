@@ -20,4 +20,8 @@
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+    <style name="BgTransparent" parent="CardView">
+        <item name="strokeColor">@color/white</item>
+        <item name="android:width">4dp</item>
+    </style>
 </resources>
