@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Digital Police</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="cameras">Camera</string>
+    <string name="notification">Notification</string>
+    <string name="histories">History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="location_name">BSD City, South Tanggerang</string>
+    <string name="cctv_name">CCTV Name 1</string>
+    <string name="time">1:45 PM</string>
+    <string name="type">Robbery</string>
+    <string name="event">Stealing detected</string>
+    <string name="details"><u>details</u></string>
+</resources>
