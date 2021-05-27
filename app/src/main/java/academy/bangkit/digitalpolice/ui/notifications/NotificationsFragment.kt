@@ -10,8 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import academy.bangkit.digitalpolice.R
 import academy.bangkit.digitalpolice.databinding.FragmentNotificationsBinding
+import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.messaging.FirebaseMessaging
 
 class NotificationsFragment : BottomSheetDialogFragment() {
 
@@ -27,6 +31,18 @@ class NotificationsFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+        val msgs = getString(R.string.msg_subscribed)
+        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
+
+        val deviceToken = FcmServices
+        val msg = getString(R.string.msg_token_fmt, deviceToken)
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+            val msg = getString(R.string.msg_token_fmt, deviceToken)
+            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        }
+
 //        notificationsViewModel =
 //            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 //
@@ -41,7 +57,7 @@ class NotificationsFragment : BottomSheetDialogFragment() {
 //        val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.BottomSheetDialogTheme)
 //        val bottomSheetView = LayoutInflater.from(requireContext())
 //            .inflate(R.layout.bottom_sheet_notification)
-        return inflater.inflate(R.layout.bottom_sheet_notification,container,false)
+        return inflater.inflate(R.layout.bottom_sheet_notification, container, false)
     }
 
     override fun onDestroyView() {

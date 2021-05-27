@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-
-
         supportActionBar!!.setBackgroundDrawable(applicationContext.getDrawable(R.drawable.bg_main))
         supportActionBar!!.hide()
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
