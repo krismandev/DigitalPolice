@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "167779983417",
+    "project_id": "bangkit-capstone-312901",
+    "storage_bucket": "bangkit-capstone-312901.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167779983417:android:088554ed00b59f217bade8",
+        "android_client_info": {
+          "package_name": "academy.bangkit.digitalpolice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167779983417-djalseat74e3qr7jvl0ms8vjkvpkth89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBATtAkN3phu8qCudwF4szCmcXBNmDupc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167779983417-djalseat74e3qr7jvl0ms8vjkvpkth89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
