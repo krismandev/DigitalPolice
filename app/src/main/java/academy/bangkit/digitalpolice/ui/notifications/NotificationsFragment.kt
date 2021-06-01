@@ -9,10 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import academy.bangkit.digitalpolice.R
+import academy.bangkit.digitalpolice.core.ui.ViewModelFactory
+import academy.bangkit.digitalpolice.databinding.BottomSheetNotificationBinding
 import academy.bangkit.digitalpolice.databinding.FragmentNotificationsBinding
+import academy.bangkit.digitalpolice.ui.home.HistoryAdapter
+import academy.bangkit.digitalpolice.ui.home.HomeViewModel
+import android.content.Context
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.messaging.FirebaseMessaging
@@ -20,28 +26,25 @@ import com.google.firebase.messaging.FirebaseMessaging
 class NotificationsFragment : BottomSheetDialogFragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var binding: BottomSheetNotificationBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        FirebaseMessaging.getInstance().subscribeToTopic("news")
-        val msgs = getString(R.string.msg_subscribed)
-        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
-
-        val deviceToken = FcmServices
-        val msg = getString(R.string.msg_token_fmt, deviceToken)
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
-            val msg = getString(R.string.msg_token_fmt, deviceToken)
-            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-        }
+//        FirebaseMessaging.getInstance().subscribeToTopic("news")
+//        val msgs = getString(R.string.msg_subscribed)
+//        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
+//
+//        val deviceToken = FcmServices
+//        val msg = getString(R.string.msg_token_fmt, deviceToken)
+//        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+//        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+//            val msg = getString(R.string.msg_token_fmt, deviceToken)
+//            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+//        }
 
 //        notificationsViewModel =
 //            ViewModelProvider(this).get(NotificationsViewModel::class.java)
@@ -57,13 +60,36 @@ class NotificationsFragment : BottomSheetDialogFragment() {
 //        val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.BottomSheetDialogTheme)
 //        val bottomSheetView = LayoutInflater.from(requireContext())
 //            .inflate(R.layout.bottom_sheet_notification)
-        return inflater.inflate(R.layout.bottom_sheet_notification, container, false)
+        binding = BottomSheetNotificationBinding.inflate(layoutInflater,container,false)
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel = ViewModelProvider(this, factory)[NotificationsViewModel::class.java]
+        val notifAdapter = NotificationsAdapter()
+
+        viewModel.getHistories().observe(viewLifecycleOwner,{
+            notifAdapter.setData(it)
+        })
+
+        with(binding.rvNotification) {
+            layoutManager = LinearLayoutManager(context)
+            this.adapter = notifAdapter
+        }
+
+    }
+
 
 
 }

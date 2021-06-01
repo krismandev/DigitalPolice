@@ -8,7 +8,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import academy.bangkit.digitalpolice.databinding.ActivityMainBinding
+import academy.bangkit.digitalpolice.ui.notifications.ActionBottom
 import android.view.MenuItem
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,13 +31,21 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_notifications
+                R.id.navigation_home
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        val btnNotif = findViewById<View>(R.id.navigation_notifications)
+        btnNotif.setOnClickListener {
+            val addBottomeSheetDialog = ActionBottom.newInstance()
+            addBottomeSheetDialog.show(
+                supportFragmentManager,ActionBottom.TAG
+            )
+        }
 
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)

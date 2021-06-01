@@ -20,7 +20,6 @@ class HistoryAdapter() : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>(
                 locationName.text = history.cctv.city.cityName
                 time.text = history.createdAt
                 type.text = history.anomalyType
-
             }
         }
     }

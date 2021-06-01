@@ -1,13 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_gravity="center"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_bottom_sheet">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:layout_margin="3dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_notification"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_notification"/>
+
+        <!--    <LinearLayout-->
+        <!--        android:orientation="vertical"-->
+        <!--        android:layout_marginTop="15dp"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content">-->
+        <!--        <LinearLayout-->
+        <!--            android:padding="13dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <ImageView-->
+        <!--                android:src="@drawable/ic_baseline_access_time_24"-->
+        <!--                android:layout_width="25dp"-->
+        <!--                android:layout_height="25dp"/>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/text0"-->
+        <!--                android:text="@string/default_notification_channel_id"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginStart="15dp"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="@color/teal_200"-->
+        <!--                />-->
+
+        <!--        </LinearLayout>-->
+        <!--        <View-->
+        <!--            android:alpha=".4"-->
+        <!--            android:background="@android:color/darker_gray"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"/>-->
+        <!--        <LinearLayout-->
+        <!--            android:padding="13dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <ImageView-->
+        <!--                android:src="@drawable/ic_dashboard_black_24dp"-->
+        <!--                android:layout_width="25dp"-->
+        <!--                android:layout_height="25dp"/>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/text1"-->
+        <!--                android:text="@string/cameras"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginStart="15dp"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="@color/teal_200"-->
+        <!--                />-->
+
+        <!--        </LinearLayout>-->
+        <!--        <View-->
+        <!--            android:alpha=".4"-->
+        <!--            android:background="@android:color/darker_gray"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"/>-->
+        <!--        <LinearLayout-->
+        <!--            android:padding="13dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <ImageView-->
+        <!--                android:src="@drawable/ic_launcher_background"-->
+        <!--                android:layout_width="25dp"-->
+        <!--                android:layout_height="25dp"/>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/text2"-->
+        <!--                android:text="@string/cctv_name"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginStart="15dp"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="@color/teal_200"-->
+        <!--                />-->
+
+        <!--        </LinearLayout>-->
+        <!--        <View-->
+        <!--            android:alpha=".4"-->
+        <!--            android:background="@android:color/darker_gray"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"/>-->
+        <!--        <LinearLayout-->
+        <!--            android:padding="13dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content">-->
+        <!--            <ImageView-->
+        <!--                android:src="@drawable/ic_baseline_remove_red_eye_24"-->
+        <!--                android:layout_width="25dp"-->
+        <!--                android:layout_height="25dp"/>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/text3"-->
+        <!--                android:text="@string/histories"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginStart="15dp"-->
+        <!--                android:textSize="18sp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="@color/teal_200"-->
+        <!--                />-->
+
+        <!--        </LinearLayout>-->
+        <!--        <View-->
+        <!--            android:alpha=".4"-->
+        <!--            android:background="@android:color/darker_gray"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1dp"/>-->
+
+
+        <!--    </LinearLayout>-->
+
+    </LinearLayout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:layout_width="300dp"-->
+    <!--    android:layout_gravity="center"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:background="@color/yellow_y">-->
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/rv_notification"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        tools:listitem="@layout/item_notification"/>-->
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+</ScrollView>
