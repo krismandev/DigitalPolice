@@ -3,6 +3,7 @@ package academy.bangkit.digitalpolice.core.data
 import academy.bangkit.digitalpolice.core.data.source.AppDataSource
 import academy.bangkit.digitalpolice.core.data.source.remote.RemoteDataSource
 import academy.bangkit.digitalpolice.core.data.source.remote.models.City
+import academy.bangkit.digitalpolice.core.data.source.remote.models.History
 import androidx.lifecycle.LiveData
 
 class AppRepository private constructor(private val remoteDataSource: RemoteDataSource) : AppDataSource {
@@ -17,6 +18,14 @@ class AppRepository private constructor(private val remoteDataSource: RemoteData
 
     override fun getCities(): LiveData<List<City>> {
         return remoteDataSource.getCities()
+    }
+
+    override fun getHistories(): LiveData<List<History>> {
+        return remoteDataSource.getHistories()
+    }
+
+    override fun getHistoryByCity(cityId: Int): LiveData<List<History>> {
+        return remoteDataSource.getHistoryByCity(cityId)
     }
 
 

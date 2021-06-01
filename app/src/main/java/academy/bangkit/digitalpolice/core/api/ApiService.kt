@@ -1,6 +1,7 @@
 package academy.bangkit.digitalpolice.core.api
 
 import academy.bangkit.digitalpolice.core.data.source.remote.models.City
+import academy.bangkit.digitalpolice.core.data.source.remote.models.History
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,6 +16,12 @@ interface ApiService {
 
     @GET("city")
     fun getCities(): Call<List<City>>
+
+    @GET("history")
+    fun getHistories(): Call<List<History>>
+
+    @GET("history/by_city/{city_id}")
+    fun getHistoryByCity(@Path("city_id") city_id: Int): Call<List<History>>
 
 
 //    @GET("tv/popular?api_key=$API_KEY")

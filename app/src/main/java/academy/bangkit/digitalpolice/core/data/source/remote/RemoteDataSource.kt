@@ -2,6 +2,7 @@ package academy.bangkit.digitalpolice.core.data.source.remote
 
 import academy.bangkit.digitalpolice.core.api.ApiConfig
 import academy.bangkit.digitalpolice.core.data.source.remote.models.City
+import academy.bangkit.digitalpolice.core.data.source.remote.models.History
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,6 +38,48 @@ class RemoteDataSource {
         })
 
         return cities
+
+    }
+
+    fun getHistories(): LiveData<List<History>>{
+        val histories: MutableLiveData<List<History>> = MutableLiveData()
+        val client = ApiConfig.getApiService().getHistories()
+
+        client.enqueue(object : Callback<List<History>>{
+            override fun onResponse(call: Call<List<History>>, response: Response<List<History>>) {
+                if (response.isSuccessful){
+                    histories.value = response.body()
+                }
+                Log.d(TAG,response.body().toString())
+            }
+
+            override fun onFailure(call: Call<List<History>>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return histories
+
+    }
+
+    fun getHistoryByCity(cityId: Int): LiveData<List<History>>{
+        val histories: MutableLiveData<List<History>> = MutableLiveData()
+        val client = ApiConfig.getApiService().getHistoryByCity(cityId)
+
+        client.enqueue(object : Callback<List<History>>{
+            override fun onResponse(call: Call<List<History>>, response: Response<List<History>>) {
+                if (response.isSuccessful){
+                    histories.value = response.body()
+                }
+                Log.d(TAG,response.body().toString())
+            }
+
+            override fun onFailure(call: Call<List<History>>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return histories
 
     }
 }
