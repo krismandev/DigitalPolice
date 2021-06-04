@@ -12,7 +12,7 @@
     <string name="cctv_name">CCTV Name 1</string>
     <string name="time">1:45 PM</string>
     <string name="type">Robbery</string>
-    <string name="event">Stealing detected</string>
+    <string name="event">Crime detected in </string>
     <string name="details"><u>details</u></string>
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
@@ -21,4 +21,10 @@
     <string name="default_notification_channel_name">News</string>
     <string name="msg_subscribed">Subscribed to news topic</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="detail">Anomaly Detail</string>
+    <string name="type_of_anomaly">Tipe Anomaly</string>
+    <string name="waktu_kejadian">Time</string>
+    <string name="cctv">CCTV</string>
+    <string name="lokasi">Location</string>
+    <string name="dash">-</string>
 </resources>

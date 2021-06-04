@@ -2,6 +2,7 @@ package academy.bangkit.digitalpolice.ui.home
 
 import academy.bangkit.digitalpolice.core.data.AppRepository
 import academy.bangkit.digitalpolice.core.data.source.remote.models.City
+import academy.bangkit.digitalpolice.core.data.source.remote.models.DeviceToken
 import academy.bangkit.digitalpolice.core.data.source.remote.models.History
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,4 +15,8 @@ class HomeViewModel(private val appRepository: AppRepository) : ViewModel() {
     fun getHistories(): LiveData<List<History>> = appRepository.getHistories()
 
     fun getHistoryByCity(cityId: Int): LiveData<List<History>> = appRepository.getHistoryByCity(cityId)
+
+    fun postToken(token: DeviceToken){
+        appRepository.postToken(token)
+    }
 }

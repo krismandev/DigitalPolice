@@ -2,6 +2,7 @@ package academy.bangkit.digitalpolice.core.ui
 
 import academy.bangkit.digitalpolice.core.data.AppRepository
 import academy.bangkit.digitalpolice.di.Injection
+import academy.bangkit.digitalpolice.ui.detail.DetailViewModel
 import academy.bangkit.digitalpolice.ui.home.HomeViewModel
 import academy.bangkit.digitalpolice.ui.notifications.NotificationsViewModel
 import android.content.Context
@@ -30,6 +31,10 @@ class ViewModelFactory private constructor(private val appRepository: AppReposit
 
             modelClass.isAssignableFrom(NotificationsViewModel::class.java) -> {
                 return NotificationsViewModel(appRepository) as T
+            }
+
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                return DetailViewModel(appRepository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

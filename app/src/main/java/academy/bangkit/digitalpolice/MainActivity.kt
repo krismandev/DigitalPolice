@@ -9,8 +9,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import academy.bangkit.digitalpolice.databinding.ActivityMainBinding
 import academy.bangkit.digitalpolice.ui.notifications.ActionBottom
+import academy.bangkit.digitalpolice.ui.notifications.FcmServices
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +47,19 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager,ActionBottom.TAG
             )
         }
+
+//        FirebaseMessaging.getInstance().subscribeToTopic("anomaly")
+//        val msgs = getString(R.string.msg_subscribed)
+//        Toast.makeText(this, msgs, Toast.LENGTH_SHORT).show()
+//
+//        val deviceToken = FcmServices
+//        val msg = getString(R.string.msg_token_fmt, deviceToken)
+//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+//        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+//            val msg = getString(R.string.msg_token_fmt, deviceToken)
+//            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+//            Log.d("OKE",msg)
+//        }
 
     }
 

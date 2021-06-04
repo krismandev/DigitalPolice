@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
 
 
     <TextView
@@ -37,16 +38,16 @@
         app:layout_constraintStart_toStartOf="@+id/event"
         app:layout_constraintTop_toBottomOf="@+id/event" />
 
-    <TextView
-        android:id="@+id/btnDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+<!--    <TextView-->
+<!--        android:id="@+id/btnDetail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="4dp"-->
 
-        android:textColor="#737373"
-        android:text="@string/details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toEndOf="@+id/time"
-        app:layout_constraintTop_toBottomOf="@+id/event" />
+<!--        android:textColor="#737373"-->
+<!--        android:text="@string/details"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.893"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/time"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/event" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

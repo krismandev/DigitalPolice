@@ -34,17 +34,6 @@ class NotificationsFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        FirebaseMessaging.getInstance().subscribeToTopic("news")
-//        val msgs = getString(R.string.msg_subscribed)
-//        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
-//
-//        val deviceToken = FcmServices
-//        val msg = getString(R.string.msg_token_fmt, deviceToken)
-//        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-//        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
-//            val msg = getString(R.string.msg_token_fmt, deviceToken)
-//            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
-//        }
 
 //        notificationsViewModel =
 //            ViewModelProvider(this).get(NotificationsViewModel::class.java)
@@ -60,6 +49,18 @@ class NotificationsFragment : BottomSheetDialogFragment() {
 //        val bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.BottomSheetDialogTheme)
 //        val bottomSheetView = LayoutInflater.from(requireContext())
 //            .inflate(R.layout.bottom_sheet_notification)
+//        FirebaseMessaging.getInstance().subscribeToTopic("news")
+//        val msgs = getString(R.string.msg_subscribed)
+//        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
+//
+//        val deviceToken = FcmServices
+//        val msg = getString(R.string.msg_token_fmt, deviceToken)
+//        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+//        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+//            val msg = getString(R.string.msg_token_fmt, deviceToken)
+//            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+//            Log.d("OKE",msg)
+//        }
         binding = BottomSheetNotificationBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
@@ -79,7 +80,7 @@ class NotificationsFragment : BottomSheetDialogFragment() {
         val viewModel = ViewModelProvider(this, factory)[NotificationsViewModel::class.java]
         val notifAdapter = NotificationsAdapter()
 
-        viewModel.getHistories().observe(viewLifecycleOwner,{
+        viewModel.getHistoriesToday().observe(viewLifecycleOwner,{
             notifAdapter.setData(it)
         })
 

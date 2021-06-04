@@ -13,7 +13,7 @@ class NotificationsViewModel(private val appRepository: AppRepository) : ViewMod
     }
     val text: LiveData<String> = _text
 
-    fun getHistories(): LiveData<List<History>> = appRepository.getHistories()
+    fun getHistoriesToday(): LiveData<List<History>> = appRepository.getHistoriesToday()
 
 
 }

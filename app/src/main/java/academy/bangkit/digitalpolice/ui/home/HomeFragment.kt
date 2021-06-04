@@ -2,9 +2,11 @@ package academy.bangkit.digitalpolice.ui.home
 
 import academy.bangkit.digitalpolice.R
 import academy.bangkit.digitalpolice.core.data.source.remote.models.City
+import academy.bangkit.digitalpolice.core.data.source.remote.models.DeviceToken
 import academy.bangkit.digitalpolice.core.data.source.remote.models.History
 import academy.bangkit.digitalpolice.core.ui.ViewModelFactory
 import academy.bangkit.digitalpolice.databinding.FragmentHomeBinding
+import academy.bangkit.digitalpolice.ui.notifications.FcmServices
 import android.R.layout
 import android.R.layout.simple_spinner_item
 import android.os.Bundle
@@ -20,26 +22,29 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Retrofit
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var citySpinner: Spinner
-
+    private lateinit var factory: ViewModelFactory
+    private lateinit var viewModel: HomeViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        factory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        fcmService()
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null){
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-            val cityNames = arrayOf("All","Tanggerang","Jakarta Pusat","Bogor")
+
+
+            val cityNames = arrayOf("All","Tangerang","Jakarta Pusat","Bogor")
             val historyAdapter = HistoryAdapter()
 
             showLoading(true)
@@ -49,7 +54,7 @@ class HomeFragment : Fragment() {
             })
 
 
-            binding.mySpinner.adapter = ArrayAdapter(requireActivity(),android.R.layout.simple_list_item_1,cityNames)
+            binding.mySpinner.adapter = ArrayAdapter(requireActivity(),R.layout.item_spinner,cityNames)
 
             binding.mySpinner.onItemSelectedListener = object : OnItemSelectedListener{
                 override fun onItemSelected(
@@ -117,6 +122,28 @@ class HomeFragment : Fragment() {
         }else{
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    fun fcmService(){
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+        val msgs = getString(R.string.msg_subscribed)
+//        Toast.makeText(requireContext(), msgs, Toast.LENGTH_SHORT).show()
+
+        val deviceToken = FcmServices
+        val msg = getString(R.string.msg_token_fmt, deviceToken)
+//        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+            val msg = getString(R.string.msg_token_fmt, deviceToken)
+//            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+            Log.d("OKE",msg)
+
+            val token = DeviceToken(deviceToken)
+            viewModel.postToken(token)
+
+        }
+
+
+
     }
 
 }
