@@ -30,9 +30,6 @@ class FcmServices : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-//        remoteMessage.notification?.let {
-//            sendNotification(it)
-//        }
         sendNotification(remoteMessage)
     }
     private fun sendNotification(remoteMessage: RemoteMessage) {
@@ -58,7 +55,6 @@ class FcmServices : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
             channel.enableVibration(true)
-//            channel.importance = NotificationManager.IMPORTANCE_HIGH
             notificationBuilder.setChannelId(channelId)
             mNotificationManager.createNotificationChannel(channel)
         }

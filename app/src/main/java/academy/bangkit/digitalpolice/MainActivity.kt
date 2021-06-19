@@ -31,8 +31,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setBackgroundDrawable(applicationContext.getDrawable(R.drawable.bg_main))
         supportActionBar!!.hide()
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home
@@ -47,20 +46,6 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager,ActionBottom.TAG
             )
         }
-
-//        FirebaseMessaging.getInstance().subscribeToTopic("anomaly")
-//        val msgs = getString(R.string.msg_subscribed)
-//        Toast.makeText(this, msgs, Toast.LENGTH_SHORT).show()
-//
-//        val deviceToken = FcmServices
-//        val msg = getString(R.string.msg_token_fmt, deviceToken)
-//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-//        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
-//            val msg = getString(R.string.msg_token_fmt, deviceToken)
-//            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-//            Log.d("OKE",msg)
-//        }
-
     }
 
 

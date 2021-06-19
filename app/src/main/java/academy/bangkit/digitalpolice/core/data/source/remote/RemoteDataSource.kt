@@ -127,14 +127,7 @@ class RemoteDataSource {
 
     fun postToken(token: DeviceToken){
         CoroutineScope(Dispatchers.IO).launch {
-//            val jsonObject = JSONObject()
-//            jsonObject.put("token",token.token)
-//
-//            val jsonObjectString = jsonObject.toString()
-//
-//            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
             val client = ApiConfig.getApiService()
-//            val response = client.savePost(requestBody)
             client.savePost(token).enqueue(object : Callback<DeviceTokenResponse>{
 
                 override fun onResponse(

@@ -39,19 +39,6 @@ class DetailActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
         val extras = intent.extras
-//        var historyId = 0
-//
-//        when(getRequestType()){
-//            REQUEST_ADAPTER -> {
-//                    historyId = intent.getIntExtra(EXTRA_HISTORY_ID,0)
-//            }
-//            REQUEST_NOTIFICATION -> {
-//                    historyId = intent.getStringExtra(EXTRA_HISTORY_ID)!!.toInt()
-//            }
-//        }
-
-//        val historyId = extras?.getInt(EXTRA_HISTORY_ID)
-
         if (extras != null){
             val historyId = extras.getInt(EXTRA_HISTORY_ID)
             if (historyId != null) {
